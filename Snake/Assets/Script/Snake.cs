@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+
 public class Snake : MonoBehaviour
 {
     // Did the snake eat something?
@@ -10,11 +11,16 @@ public class Snake : MonoBehaviour
 
     public Text currentScoreText;
     public Text highScoreText;
+    public Text gameOverText;
+
     //Did user die?
     bool isDead = false;
 
     // Tail Prefab
     public GameObject tailPrefab;
+
+    // Restart Button
+    public Button restartButton;
 
     // Current Movement Direction
     // (by default it moves to the right)
@@ -27,7 +33,9 @@ public class Snake : MonoBehaviour
     void Start()
     {
         // Move the Snake every 300ms
-        InvokeRepeating("Move", 0.3f, 0.3f);
+        InvokeRepeating("Move", 0.3f, 0.3f); 
+        gameOverText.enabled = false;
+        restartButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -97,6 +105,8 @@ public class Snake : MonoBehaviour
         else
         {   // Collided with Tail or Border
             isDead = true;
+            gameOverText.enabled = true;
+            restartButton.gameObject.SetActive(true);
         }
     }
 }
