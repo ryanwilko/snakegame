@@ -7,4 +7,6 @@ Current status:
 
 002 - Added "Game Over!" text label and "Restart?" button
 
-(PENDING) 003 - Script restart method
+003 - Script restart method
+
+(PENDING) 004 - Fix scores
