@@ -9,4 +9,6 @@ Current status:
 
 003 - Script restart method
 
-(PENDING) 004 - Fix scores
+004 - Fix scores
+
+(PENDING) 005 - (GAME ENHANCEMENT) Good & Bad food
