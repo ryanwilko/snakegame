@@ -9,7 +9,8 @@ public class Snake : MonoBehaviour
     // Did the snake eat something?
     bool ate = false;
 
-    int currentScore = 0;
+    public int currentScore;
+    public int highScore;
 
     public Text currentScoreText;
     public Text highScoreText;
@@ -36,9 +37,17 @@ public class Snake : MonoBehaviour
     {
         // Move the Snake every 300ms
         InvokeRepeating("Move", 0.3f, 0.3f);
+
         gameOverText.enabled = false;
+
         restartButton.gameObject.SetActive(false);
-        currentScoreText.text = "Current Score: ";
+
+        currentScoreText.text = "Current Score: " + currentScore;
+
+        highScore = PlayerPrefs.GetInt ("highScore", highScore);
+
+        highScoreText.text = "High Score: " + highScore;
+
     }
 
     // Update is called once per frame
@@ -55,6 +64,12 @@ public class Snake : MonoBehaviour
                 dir = Vector2.left;
             else if (Input.GetKey(KeyCode.DownArrow))
                 dir = Vector2.down;
+        }
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            highScoreText.text = "High Score: " + highScore;
+            PlayerPrefs.SetInt ("highScore", highScore);
         }
     }
 
@@ -112,6 +127,7 @@ public class Snake : MonoBehaviour
             isDead = true;
             gameOverText.enabled = true;
             restartButton.gameObject.SetActive(true);
+            PlayerPrefs.Save();
         }
     }
 }
