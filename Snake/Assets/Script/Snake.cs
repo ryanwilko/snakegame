@@ -9,6 +9,8 @@ public class Snake : MonoBehaviour
     // Did the snake eat something?
     bool ate = false;
 
+    int currentScore = 0;
+
     public Text currentScoreText;
     public Text highScoreText;
     public Text gameOverText;
@@ -33,9 +35,10 @@ public class Snake : MonoBehaviour
     void Start()
     {
         // Move the Snake every 300ms
-        InvokeRepeating("Move", 0.3f, 0.3f); 
+        InvokeRepeating("Move", 0.3f, 0.3f);
         gameOverText.enabled = false;
         restartButton.gameObject.SetActive(false);
+        currentScoreText.text = "Current Score: ";
     }
 
     // Update is called once per frame
@@ -98,9 +101,11 @@ public class Snake : MonoBehaviour
         {
             // Get longer in next Move call
             ate = true;
-
             // Remove the Food
             Destroy(coll.gameObject);
+
+            currentScore++;
+            currentScoreText.text = "Current Score: " + currentScore;
         }
         else
         {   // Collided with Tail or Border
