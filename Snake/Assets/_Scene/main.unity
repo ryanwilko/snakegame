@@ -452,8 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23263347b10fc34db587b3412a8f2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScoreText: {fileID: 336047634}
-  highScoreText: {fileID: 1816113569}
+  currentScoreText: {fileID: 1816113569}
+  highScoreText: {fileID: 336047634}
   gameOverText: {fileID: 309349807}
   tailPrefab: {fileID: 101184, guid: f8137807577d5f949bb11cb4b88adbae, type: 3}
   restartButton: {fileID: 938718811}
